@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using System.Text;
 
 namespace Address_Book_Using_Collections
@@ -45,20 +46,43 @@ namespace Address_Book_Using_Collections
         //Method to add contact to Address book
         public void AddContact(Contact newEntry)
         {
-            Contact result = FindContact(newEntry.firstName, newEntry.lastName);
-            if (result == null)
+            contactList.Add(newEntry);
+        }
+
+        public void EditContact(string fName, string lName)
+        {
+            Contact oldContact = FindContact(fName, lName);
+            if (oldContact != null)
             {
-                contactList.Add(newEntry);
-                Console.WriteLine("Contact added successfully!");
+                Console.WriteLine("The existing contact details are ");
+                Console.WriteLine("Name      : " + oldContact.firstName + " " + oldContact.lastName);
+                Console.WriteLine("Address   : " + oldContact.address + ", " + oldContact.city + ", " + oldContact.state + "-" + oldContact.zipCode);
+                Console.WriteLine("Phone No. : " + oldContact.phoneNumber);
+                Console.WriteLine("Email id  : " + oldContact.email);
+                Console.WriteLine("Enter new Details ");
+                Console.Write("New Address :");
+                oldContact.address=Console.ReadLine();
+                Console.Write("New City :");
+                oldContact.city=Console.ReadLine();
+                Console.Write("New State :");
+                oldContact.state=Console.ReadLine();
+                Console.Write("New ZipCode :");
+                oldContact.zipCode=Console.ReadLine();
+                Console.Write("New PhoneNumber :");
+                oldContact.phoneNumber=Console.ReadLine();
+                Console.Write("New Email Id :");
+                oldContact.email=Console.ReadLine();
+                Console.WriteLine("Details updated succesfully for " + fName+ " " +lName);
             }
             else
             {
-                Console.WriteLine("Contact already exists!");
+                Console.WriteLine("There is no contact with name {0} in the address book", fName+" "+lName);
             }
         }
 
-        //Method to print contacts in Address book
-        public void PrintContact()
+
+        //Method to print all contacts in Address book
+        public void PrintAddressBook()
         {
             if (AddressBook.contactList.Count != 0)
             {
@@ -78,3 +102,4 @@ namespace Address_Book_Using_Collections
         }
     }
 }
+
