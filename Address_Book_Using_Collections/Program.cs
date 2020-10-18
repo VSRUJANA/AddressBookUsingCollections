@@ -6,7 +6,7 @@ namespace Address_Book_Using_Collections
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to Address Book System!");
         }
     }
 }
