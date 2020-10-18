@@ -49,6 +49,7 @@ namespace Address_Book_Using_Collections
             contactList.Add(newEntry);
         }
 
+        //Method to edit an existing contact in Address book
         public void EditContact(string fName, string lName)
         {
             Contact oldContact = FindContact(fName, lName);
@@ -61,31 +62,46 @@ namespace Address_Book_Using_Collections
                 Console.WriteLine("Email id  : " + oldContact.email);
                 Console.WriteLine("Enter new Details ");
                 Console.Write("New Address :");
-                oldContact.address=Console.ReadLine();
+                oldContact.address = Console.ReadLine();
                 Console.Write("New City :");
-                oldContact.city=Console.ReadLine();
+                oldContact.city = Console.ReadLine();
                 Console.Write("New State :");
-                oldContact.state=Console.ReadLine();
+                oldContact.state = Console.ReadLine();
                 Console.Write("New ZipCode :");
-                oldContact.zipCode=Console.ReadLine();
+                oldContact.zipCode = Console.ReadLine();
                 Console.Write("New PhoneNumber :");
-                oldContact.phoneNumber=Console.ReadLine();
+                oldContact.phoneNumber = Console.ReadLine();
                 Console.Write("New Email Id :");
-                oldContact.email=Console.ReadLine();
-                Console.WriteLine("Details updated succesfully for " + fName+ " " +lName);
+                oldContact.email = Console.ReadLine();
+                Console.WriteLine("Details updated succesfully for " + fName + " " + lName);
             }
             else
             {
-                Console.WriteLine("There is no contact with name {0} in the address book", fName+" "+lName);
+                Console.WriteLine("There is no contact with name {0} in the address book", fName + " " + lName);
             }
         }
 
+        //Method to delete a contact from address book
+        public void DeleteContact(string fName, string lName)
+        {
+            Contact find = FindContact(fName, lName);
+            if (find == null)
+            {
+                Console.WriteLine("No Record found for {0} in the address book", fName + " " + lName);
+            }
+            else
+            {
+                contactList.Remove(find);
+                Console.WriteLine("Contact Deleted successfully!");
+            }
+        }
 
         //Method to print all contacts in Address book
         public void PrintAddressBook()
         {
             if (AddressBook.contactList.Count != 0)
             {
+                Console.WriteLine("Contacts in the Address Book:");
                 foreach (Contact person in contactList)
                 {
                     Console.WriteLine("-------------------------------------------------------------");

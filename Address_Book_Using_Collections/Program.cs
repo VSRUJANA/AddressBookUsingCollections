@@ -15,7 +15,7 @@ namespace Address_Book_Using_Collections
             bool var = true;
             while (var)
             {
-                Console.WriteLine("Enter your choice  1.Add Contact 2.Edit Contact 3.Display Address book 4.Exit ");
+                Console.WriteLine("Enter your choice  1.Add Contact 2.Edit Contact 3.Delete Contact 4.Display Address book 5.Exit ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -34,6 +34,14 @@ namespace Address_Book_Using_Collections
                         break;
 
                     case 3:
+                        Console.WriteLine("Enter the first name of the contact to be deleted");
+                        string fname = Console.ReadLine();
+                        Console.WriteLine("Enter the last name of the contact to be deleted");
+                        string lname = Console.ReadLine();
+                        AB.DeleteContact(fname, lname);
+                        break;
+
+                    case 4:
                         AB.PrintAddressBook();
                         break;
 
