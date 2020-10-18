@@ -13,7 +13,7 @@ namespace Address_Book_Using_Collections
             contactList = new List<Contact>();
         }
 
-        //Method to take user input from Console
+        //Method to take user input from console
         public Contact TakeInputForContact()
         {
             Console.WriteLine("First Name");
