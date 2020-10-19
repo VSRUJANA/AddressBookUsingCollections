@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Versioning;
 using System.Text;
+using System.Threading;
 
 namespace Address_Book_Using_Collections
 {
@@ -128,6 +129,48 @@ namespace Address_Book_Using_Collections
             {
                 Console.WriteLine("There are no contacts in the address book!");
             }
+        }
+
+        public static void DisplayContactByState(string state)
+        {
+            int count = 0;
+            foreach (var item in contactList)
+            {
+                if (item.state == state)
+                {
+                    Console.WriteLine("-------------------------------------------------------------");
+                    Display(item);
+                    count++;
+                }
+            }
+            if (count == 0)
+            {
+                Console.WriteLine("No contacts found in {0} state", state);
+            }
+        }
+
+        public static void DisplayContactByCity(string city)
+        {
+            int count = 0;
+            foreach (var item in contactList)
+            {
+                if (item.city == city)
+                {
+                    Console.WriteLine("-------------------------------------------------------------");
+                    Display(item);
+                }
+            }
+            if (count == 0)
+            {
+                Console.WriteLine("No contacts found in {0} city", city);
+            }
+        }
+        public static void Display(Contact person)
+        {
+            Console.WriteLine("Name      : " + person.firstName + " " + person.lastName);
+            Console.WriteLine("Address   : " + person.address + ", " + person.city + ", " + person.state + "-" + person.zipCode);
+            Console.WriteLine("Phone No. : " + person.phoneNumber);
+            Console.WriteLine("Email id  : " + person.email);
         }
     }
 }

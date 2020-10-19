@@ -15,7 +15,7 @@ namespace Address_Book_Using_Collections
             var quit = false;
             while (!quit)
             {
-                Console.WriteLine("Enter your choice 1.Create New Address Book 2.Update existing Address Book 3.Quit");
+                Console.WriteLine("Enter your choice 1.Create New Address Book 2.Update existing Address Book 3.Search person in city 4.search person in state 5.Quit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -63,7 +63,17 @@ namespace Address_Book_Using_Collections
                             }
                         }
 
-                    case 3:
+                        case 3:
+                        Console.WriteLine("Enter a city you want to search");
+                        string city = Console.ReadLine();
+                        AddressBook.DisplayContactByCity(city);
+                        break;
+                        case 4:
+                        Console.WriteLine("Enter a state you want to search");
+                        string state = Console.ReadLine();
+                        AddressBook.DisplayContactByState(state);
+                        break;
+                    case 5:
                         quit = true;
                         break;
 
