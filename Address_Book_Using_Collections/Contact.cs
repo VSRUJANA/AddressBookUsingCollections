@@ -14,7 +14,13 @@ namespace Address_Book_Using_Collections
 		public string phoneNumber { get; set; }
 		public string email { get; set; }
 
-		// Constructor Declaration
+		// Default Constructor Declaration
+		public Contact()
+        {
+
+        }
+
+		//Parameterised constructor Declaration
 		public Contact(string fName, string lName, string address, string city, string state, string zip, string phNo, string eId)
 		{
 			this.firstName = fName;
