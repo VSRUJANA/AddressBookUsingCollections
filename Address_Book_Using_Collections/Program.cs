@@ -100,6 +100,7 @@ namespace Address_Book_Using_Collections
                         Console.WriteLine("Enter the person details to be added in the address book");
                         Contact entry = AB.TakeInputForContact();
                         AB.AddContact(entry);
+                        if(entry!=null)
                         Console.WriteLine("Contact added successfully!");
                         break;
 

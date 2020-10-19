@@ -20,20 +20,26 @@ namespace Address_Book_Using_Collections
             string fName = Console.ReadLine();
             Console.WriteLine("Last Name");
             string lName = Console.ReadLine();
-            Console.WriteLine("Address");
-            string address = Console.ReadLine();
-            Console.WriteLine("City");
-            string city = Console.ReadLine();
-            Console.WriteLine("State");
-            string state = Console.ReadLine();
-            Console.WriteLine("Zip code");
-            string zipCode = Console.ReadLine();
-            Console.WriteLine("Phone Number");
-            string phNumber = Console.ReadLine();
-            Console.WriteLine("Email");
-            string email = Console.ReadLine();
-            Contact newContact = new Contact(fName, lName, address, city, state, zipCode, phNumber, email);
-            return newContact;
+            Contact find = FindContact(fName, lName);
+            if (find != null)
+                return null;
+            else
+            {
+                Console.WriteLine("Address");
+                string address = Console.ReadLine();
+                Console.WriteLine("City");
+                string city = Console.ReadLine();
+                Console.WriteLine("State");
+                string state = Console.ReadLine();
+                Console.WriteLine("Zip code");
+                string zipCode = Console.ReadLine();
+                Console.WriteLine("Phone Number");
+                string phNumber = Console.ReadLine();
+                Console.WriteLine("Email");
+                string email = Console.ReadLine();
+                Contact newContact = new Contact(fName, lName, address, city, state, zipCode, phNumber, email);
+                return newContact;
+            }
         }
 
         //Method to find whether contact is present in AddressBook
@@ -46,7 +52,14 @@ namespace Address_Book_Using_Collections
         //Method to add contact to Address book
         public void AddContact(Contact newEntry)
         {
-            contactList.Add(newEntry);
+            if (newEntry == null)
+            {
+                Console.WriteLine("Duplicate entries of same person are not allowed!");
+            }
+            else
+            {
+                contactList.Add(newEntry);
+            }
         }
 
         //Method to edit an existing contact in Address book
