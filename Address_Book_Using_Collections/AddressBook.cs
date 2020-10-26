@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Versioning;
 using System.Text;
-using System.Threading;
+using System.IO;
 
 namespace Address_Book_Using_Collections
 {
     public class AddressBook
     {
         public List<Contact> contactList;
+        string path = @"C:\Users\sajju2002\source\repos\Address_Book_Using_Collections\ContactFile.txt""";
 
         public AddressBook()
         {
@@ -16,7 +16,36 @@ namespace Address_Book_Using_Collections
 
         }
 
-        public string AddContact(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNo, string eMail)
+        public void WriteToFile()
+        {
+            if (File.Exists(path))
+            {
+                int count = 0;
+                using (StreamWriter sr = File.AppendText(path))
+                {
+
+                    foreach (Contact c in contactList)
+                    {
+                        sr.WriteLine(++count + " " + c.ToString() + "\n");
+
+                    }
+                    sr.Close();
+                }
+            }
+            else
+            {
+                Console.WriteLine("File Does Not Exist");
+            }
+
+        }
+        public void ClearFile()
+        {
+            File.WriteAllText(path, string.Empty);
+        }
+
+    
+
+public string AddContact(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNo, string eMail)
         {
             if (CheckName(firstName, lastName) == false)
             {
