@@ -8,15 +8,13 @@ namespace Address_Book_Using_Collections
     {
         public void EditAddOrDeleteContact(AddressBook addressBook)
         {
-            string[] name;
             int choice = 0;
             string[] details;
             bool flag = true;
 
             while (flag)
             {
-
-                Console.WriteLine("1.Add Contact\n2.Edit Contact\n3.Remove a contact\n4.Exit");
+                Console.WriteLine("1.Add Contact\n2.Edit Contact\n3.Remove a contact\n4.Sort By Name\n5.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -62,6 +60,9 @@ namespace Address_Book_Using_Collections
                         }
                         break;
                     case 4:
+                        addressBook.SortByName();
+                        break;
+                    case 5:
                         flag = false;
                         break;
                     default:

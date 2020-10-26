@@ -83,6 +83,15 @@ namespace Address_Book_Using_Collections
             return contact;
         }
 
+        public void SortByName()
+        {
+            contactList.Sort((contact1, contact2) => contact1.firstName.CompareTo(contact2.firstName));
+            foreach (Contact contact in contactList)
+            {
+                Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", "+contact.city+", "+contact.state+"-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email);
+            }
+        }
+
     }
 }
 
