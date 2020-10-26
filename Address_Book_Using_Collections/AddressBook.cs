@@ -92,6 +92,34 @@ namespace Address_Book_Using_Collections
             }
         }
 
+        public void SortByCity()
+        {
+            contactList.Sort((contact1, contact2) => contact1.city.CompareTo(contact2.city));
+            foreach (Contact contact in contactList)
+            {
+                Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", " + contact.city + ", " + contact.state + "-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email);
+            }
+
+        }
+        public void SortByState()
+        {
+            contactList.Sort((contact1, contact2) => contact1.state.CompareTo(contact2.state));
+            foreach (Contact contact in contactList)
+            {
+                Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", " + contact.city + ", " + contact.state + "-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email);
+            }
+
+        }
+        public void SortByZipCode()
+        {
+            contactList.Sort((contact1, contact2) => contact1.zipCode.CompareTo(contact2.zipCode));
+            foreach (Contact contact in contactList)
+            {
+                Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", " + contact.city + ", " + contact.state + "-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email);
+            }
+
+        }
+
     }
 }
 
