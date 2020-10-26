@@ -8,7 +8,7 @@ namespace Address_Book_Using_Collections
     {
         Dictionary<string, AddressBook> addressBooksCollection = new Dictionary<string, AddressBook>();
         public Dictionary<string, List<Contact>> ContactByCity;
-        Dictionary<string, List<Contact>> ContactByState;
+        public Dictionary<string, List<Contact>> ContactByState;
         List<string> cities;
         List<string> states;
         public AddressBookDict()
@@ -131,6 +131,32 @@ namespace Address_Book_Using_Collections
             {
                 Console.WriteLine("No Contact found");
             }
+        }
+
+        public int CountByCity(string city)
+        {
+            int count = 0;
+            if (ContactByCity.ContainsKey(city))
+            {
+                foreach (Contact contact in ContactByCity[city])
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        
+        public int CountByState(string state)
+        {
+            int count = 0;
+            if (ContactByCity.ContainsKey(state))
+            {
+                foreach (Contact contact in ContactByState[state])
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }

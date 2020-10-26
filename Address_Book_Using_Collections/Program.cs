@@ -15,7 +15,7 @@ namespace Address_Book_Using_Collections
             Console.WriteLine("Welcome to Address Book System!");
             while (true)
             {
-                Console.WriteLine("1.Add Address Book\n2.Edit Or Add Contact in Address Book\n3.View Persons By City\n4.View Persons By State\n5.Exit");
+                Console.WriteLine("1.Add Address Book\n2.Edit Or Add Contact in Address Book\n3.View Persons By City\n4.View Persons By State\n5.Get count by City\n6.Get count by State\n7.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -42,19 +42,32 @@ namespace Address_Book_Using_Collections
                         break;
                     case 3:
                         Console.WriteLine("Enter City");
-                        string city = Console.ReadLine();
-                        Console.WriteLine("Contacts in {0} city: ", city);
+                        string city1 = Console.ReadLine();
+                        Console.WriteLine("Contacts in {0} city: ", city1);
                         multipleAddressBooks.SetContactByCityDictionary();
-                        multipleAddressBooks.ViewPersonsByCity(city);
+                        multipleAddressBooks.ViewPersonsByCity(city1);
                         break;
                     case 4:
                         Console.WriteLine("Enter State");
-                        string state = Console.ReadLine();
-                        Console.WriteLine("Contacts in {0} state: ",state);
+                        string state1 = Console.ReadLine();
+                        Console.WriteLine("Contacts in {0} state: ",state1);
                         multipleAddressBooks.SetContactByStateDictionary();
-                        multipleAddressBooks.ViewPersonsByState(state);
+                        multipleAddressBooks.ViewPersonsByState(state1);
                         break;
                     case 5:
+                        Console.WriteLine("Enter City");
+                        string city2 = Console.ReadLine();
+                        multipleAddressBooks.SetContactByCityDictionary();
+                        Console.WriteLine("Number of Contacts in {0} city: {1} ", city2, multipleAddressBooks.CountByCity(city2));
+                        break;
+                    case 6:
+                        Console.WriteLine("Enter State");
+                        string state2 = Console.ReadLine();
+                        multipleAddressBooks.SetContactByStateDictionary();
+                        Console.WriteLine("Number of Contacts in {0} state: {1} ", state2,multipleAddressBooks.CountByState(state2));
+                        break;
+
+                    case 7:
                         Environment.Exit(0);
                         break;
 
