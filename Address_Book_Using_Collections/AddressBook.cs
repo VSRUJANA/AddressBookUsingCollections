@@ -8,44 +8,58 @@ namespace Address_Book_Using_Collections
     public class AddressBook
     {
         public List<Contact> contactList;
-        string path = @"C:\Users\sajju2002\source\repos\Address_Book_Using_Collections\ContactFile.txt""";
 
         public AddressBook()
         {
             contactList = new List<Contact>();
-
         }
 
-        public void WriteToFile()
+        string path = @"C:\Users\sajju2002\AddressbookUsingCollections\Address_Book_Using_Collections\ContactFile.txt";
+
+        public void ReadUsingStreamReader()
         {
             if (File.Exists(path))
             {
-                int count = 0;
-                using (StreamWriter sr = File.AppendText(path))
+                using (StreamReader streamReader = File.OpenText(path))
                 {
-
-                    foreach (Contact c in contactList)
-                    {
-                        sr.WriteLine(++count + " " + c.ToString() + "\n");
-
-                    }
-                    sr.Close();
+                    String fileData = "";
+                    while ((fileData = streamReader.ReadLine()) != null)
+                        Console.WriteLine((fileData));
                 }
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("No file");
+            }
+        }
+
+        public void WriteUsingStreamWriter()
+        {
+            if (File.Exists(path))
+            {
+                using (StreamWriter streamWriter = File.AppendText(path))
+                {
+                    foreach (Contact contact in contactList)
+                    {
+                        streamWriter.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", " + contact.city + ", " + contact.state + "-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email + "\n");
+                    }
+                    streamWriter.Close();
+                }
+                Console.ReadKey();
             }
             else
             {
                 Console.WriteLine("File Does Not Exist");
             }
-
         }
+
         public void ClearFile()
         {
             File.WriteAllText(path, string.Empty);
         }
 
-    
-
-public string AddContact(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNo, string eMail)
+        public string AddContact(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNo, string eMail)
         {
             if (CheckName(firstName, lastName) == false)
             {
@@ -69,7 +83,6 @@ public string AddContact(string firstName, string lastName, string address, stri
                     c.zipCode = zipCode;
                     c.phoneNumber = phoneNo;
                     c.email = eMail;
-
                     return;
                 }
             }
@@ -117,7 +130,7 @@ public string AddContact(string firstName, string lastName, string address, stri
             contactList.Sort((contact1, contact2) => contact1.firstName.CompareTo(contact2.firstName));
             foreach (Contact contact in contactList)
             {
-                Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", "+contact.city+", "+contact.state+"-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email);
+                Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", " + contact.city + ", " + contact.state + "-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email);
             }
         }
 
@@ -130,6 +143,7 @@ public string AddContact(string firstName, string lastName, string address, stri
             }
 
         }
+
         public void SortByState()
         {
             contactList.Sort((contact1, contact2) => contact1.state.CompareTo(contact2.state));
@@ -139,6 +153,7 @@ public string AddContact(string firstName, string lastName, string address, stri
             }
 
         }
+
         public void SortByZipCode()
         {
             contactList.Sort((contact1, contact2) => contact1.zipCode.CompareTo(contact2.zipCode));
@@ -148,7 +163,6 @@ public string AddContact(string firstName, string lastName, string address, stri
             }
 
         }
-
     }
 }
 

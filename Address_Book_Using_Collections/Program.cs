@@ -27,7 +27,7 @@ namespace Address_Book_Using_Collections
 
                         break;
                     case 2:
-                        Console.WriteLine("Enter name of Address Book");
+                        Console.WriteLine("Enter name of Address Book you want to modify");
                         addBookName = Console.ReadLine();
                         addressBook = multipleAddressBooks.GetAddressBook(addBookName);
                         if (addressBook != null)

@@ -14,7 +14,7 @@ namespace Address_Book_Using_Collections
 
             while (flag)
             {
-                Console.WriteLine("1.Add Contact\n2.Edit Contact\n3.Remove a contact\n4.Sort By Name\n5.Sort By City\n6.Sort By State\n7.Sort By ZipCode\n8.Write To File\n9.Exit");
+                Console.WriteLine("1.Add Contact\n2.Edit Contact\n3.Remove a contact\n4.Sort By Name\n5.Sort By City\n6.Sort By State\n7.Sort By ZipCode\n8.Write To File\n9.Read from File\n10.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -72,11 +72,14 @@ namespace Address_Book_Using_Collections
                         addressBook.SortByZipCode();
                         break;
                     case 8:
-                        addressBook.ClearFile();
-                        addressBook.WriteToFile();
+                        //addressBook.ClearFile();
+                        addressBook.WriteUsingStreamWriter();
                         Console.WriteLine("Written to file successfully");
-                        break;
+                        break; 
                     case 9:
+                        addressBook.ReadUsingStreamReader();
+                        break;
+                    case 10:
                         flag = false;
                         break;
                     default:
