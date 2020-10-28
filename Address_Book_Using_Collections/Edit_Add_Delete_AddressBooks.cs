@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Address_Book_Using_Collections
 {
-   public class Edit_Add_Delete_AddressBooks
+    public class Edit_Add_Delete_AddressBooks
     {
-        public void EditAddOrDeleteContact(string addressBookName,AddressBook addressBook)
+        public void EditAddOrDeleteContact(string addressBookName, AddressBook addressBook)
         {
             int choice = 0;
             string[] details;
@@ -14,7 +14,7 @@ namespace Address_Book_Using_Collections
 
             while (flag)
             {
-                Console.WriteLine("1.Add Contact\n2.Edit Contact\n3.Remove a contact\n4.Sort By Name\n5.Sort By City\n6.Sort By State\n7.Sort By ZipCode\n8.Write To File\n9.Read from File\n10.Write to CSV\n11.Read From CSV\n12.Exit");
+                Console.WriteLine("1.Add Contact\n2.Edit Contact\n3.Remove a contact\n4.Sort By Name\n5.Sort By City\n6.Sort By State\n7.Sort By ZipCode\n8.Write To File\n9.Read from File\n10.Write to CSV\n11.Read From CSV\n12.Write to JSON file\n13.Read From JSON File\n14.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -72,27 +72,31 @@ namespace Address_Book_Using_Collections
                         addressBook.SortByZipCode();
                         break;
                     case 8:
-                        ReadWrite.WriteUsingStreamWriter(addressBookName,addressBook.contactList);
+                        ReadWrite.WriteUsingStreamWriter(addressBookName, addressBook.contactList);
                         Console.WriteLine("Written to file successfully");
-                        break; 
+                        break;
                     case 9:
                         ReadWrite.ReadUsingStreamReader();
                         break;
                     case 10:
                         ReadWrite.WriteToCSV(addressBook.contactList);
-
                         break;
                     case 11:
                         ReadWrite.ReadFromCSV();
                         break;
                     case 12:
+                        ReadWrite.WriteToJsonFile(addressBook.contactList);
+                        break;
+                    case 13:
+                        ReadWrite.ReadFromJsonFile();
+                        break;
+                    case 14:
                         flag = false;
                         break;
                     default:
                         Console.WriteLine("Invalid choice");
                         break;
                 }
-
             }
         }
     }

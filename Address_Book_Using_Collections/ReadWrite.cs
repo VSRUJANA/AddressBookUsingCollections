@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using CsvHelper;
+using Newtonsoft.Json;
 
 namespace Address_Book_Using_Collections
 {
@@ -43,13 +44,13 @@ namespace Address_Book_Using_Collections
         }
 
         //Writing file using StreamReader
-        public static void WriteUsingStreamWriter(string addressBookName,List<Contact> contactList)
+        public static void WriteUsingStreamWriter(string addressBookName, List<Contact> contactList)
         {
             if (File.Exists(path))
             {
                 using (StreamWriter streamWriter = File.AppendText(path))
                 {
-                    streamWriter.WriteLine("Contacts in "+ addressBookName+ " address book : ");
+                    streamWriter.WriteLine("Contacts in " + addressBookName + " address book : ");
                     foreach (Contact contact in contactList)
                     {
                         streamWriter.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", " + contact.city + ", " + contact.state + "-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email + "\n");
@@ -64,7 +65,7 @@ namespace Address_Book_Using_Collections
         }
 
         static string csvPath = @"C:\Users\sajju2002\AddressBookUsingCollections\Address_Book_Using_Collections\Utilites\ContactCSVFile.csv";
-            
+
         public static void WriteToCSV(List<Contact> contactList)
         {
             if (FileExists(csvPath))
@@ -81,6 +82,7 @@ namespace Address_Book_Using_Collections
                 Console.WriteLine("File does not exist");
             }
         }
+
         public static void ReadFromCSV()
         {
             if (FileExists(csvPath))
@@ -100,6 +102,41 @@ namespace Address_Book_Using_Collections
             {
                 Console.WriteLine("No such file found");
             }
+        }
+
+        static string jsonPath = @"C:\Users\sajju2002\AddressBookUsingCollections\Address_Book_Using_Collections\Utilites\ContactJSONFile.json";
+
+        public static void WriteToJsonFile(List<Contact> contactList)
+        {
+            if (FileExists(jsonPath))
+            {
+                using (StreamWriter streamWriter = new StreamWriter(jsonPath))
+                {
+                    string json = JsonConvert.SerializeObject(contactList);
+                    streamWriter.WriteLine(json);
+                }
+                Console.WriteLine("Records Added to ContactJSONFile Successfully");
+            }
+            else
+                Console.WriteLine("File Doesn't exist");
+        }
+
+        public static void ReadFromJsonFile()
+        {
+            if (FileExists(jsonPath))
+            {
+                using (StreamReader streamReader = new StreamReader(jsonPath))
+                {
+                    string json = streamReader.ReadToEnd();
+                    List<Contact> records = JsonConvert.DeserializeObject<List<Contact>>(json);
+                    foreach (Contact contact in records)
+                    {
+                        Console.Write("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", " + contact.city + ", " + contact.state + "-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email + "\n");
+                    }
+                }
+            }
+            else
+                Console.WriteLine("File Doesn't exist");
         }
     }
 }
