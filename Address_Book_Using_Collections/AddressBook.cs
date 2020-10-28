@@ -14,51 +14,6 @@ namespace Address_Book_Using_Collections
             contactList = new List<Contact>();
         }
 
-        string path = @"C:\Users\sajju2002\AddressbookUsingCollections\Address_Book_Using_Collections\ContactFile.txt";
-
-        public void ReadUsingStreamReader()
-        {
-            if (File.Exists(path))
-            {
-                using (StreamReader streamReader = File.OpenText(path))
-                {
-                    String fileData = "";
-                    while ((fileData = streamReader.ReadLine()) != null)
-                        Console.WriteLine((fileData));
-                }
-                Console.ReadKey();
-            }
-            else
-            {
-                Console.WriteLine("No file");
-            }
-        }
-
-        public void WriteUsingStreamWriter()
-        {
-            if (File.Exists(path))
-            {
-                using (StreamWriter streamWriter = File.AppendText(path))
-                {
-                    foreach (Contact contact in contactList)
-                    {
-                        streamWriter.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\tAddress :" + contact.address + ", " + contact.city + ", " + contact.state + "-" + contact.zipCode + "\tPhone No :" + contact.phoneNumber + "\tEmail :" + contact.email + "\n");
-                    }
-                    streamWriter.Close();
-                }
-                Console.ReadKey();
-            }
-            else
-            {
-                Console.WriteLine("File Does Not Exist");
-            }
-        }
-
-        public void ClearFile()
-        {
-            File.WriteAllText(path, string.Empty);
-        }
-
         public string AddContact(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNo, string eMail)
         {
             if (CheckName(firstName, lastName) == false)

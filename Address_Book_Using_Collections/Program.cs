@@ -15,6 +15,7 @@ namespace Address_Book_Using_Collections
             Console.WriteLine("Welcome to Address Book System!");
             while (true)
             {
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("1.Add Address Book\n2.Edit Or Add Contact in Address Book\n3.View Persons By City\n4.View Persons By State\n5.Get count by City\n6.Get count by State\n7.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
@@ -32,7 +33,7 @@ namespace Address_Book_Using_Collections
                         addressBook = multipleAddressBooks.GetAddressBook(addBookName);
                         if (addressBook != null)
                         {
-                            operation.EditAddOrDeleteContact(addressBook);
+                            operation.EditAddOrDeleteContact(addBookName,addressBook);
 
                         }
                         else

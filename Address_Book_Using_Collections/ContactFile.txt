@@ -1,4 +1,0 @@
-Name :Tony Stark	Address :Stark Tower, Manhattan, NewYork-10001	Phone No :7878799978	Email :ironman@gmail.com
-Name :Devrath D	Address :Brodipet, Palakol, AndhraPradesh-787876	Phone No :98989765456	Email :devD@gmail.com
-Name :srujana V	Address :KPHB colony, Vizag, AndhraPradesh-534260	Phone No :89897654224	Email :srujanV@gmail.com
-
